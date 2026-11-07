@@ -1,0 +1,481 @@
+[
+  {
+    "file": "checks/lean/KaplanskyLie/IdealProducts.lean",
+    "declarations": [
+      "KaplanskyLie.IdealProducts.prod_isIdeal",
+      "KaplanskyLie.IdealProducts.lc_isIdeal",
+      "KaplanskyLie.IdealProducts.lower_central_product",
+      "KaplanskyLie.IdealProducts.der_le_lc",
+      "KaplanskyLie.IdealProducts.eval_mem_lc",
+      "KaplanskyLie.IdealProducts.lc_sup_eq_bot"
+    ],
+    "book": "Гл. I, § 2, теоремы 4, 6, 7, 8, 9: произведение идеалов, L^(n) в L_(n+1), L_i L_j в L_(i+j), произведение с r сомножителями из I лежит в I_r, (I + J)_(m+n-1) = 0.",
+    "limitations": "Кольца Ли и аддитивные подгруппы. Вторая часть теоремы 6 и теорема 10 не формализованы.",
+    "passages": [
+      "th:product-of-ideals",
+      "th:derived-in-lower-central",
+      "th:lower-central-product",
+      "eq:lower-central-jacobi",
+      "th:ideal-powers-products",
+      "th:sum-nilpotent-ideals"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/InvariantSubspace.lean",
+    "declarations": [
+      "KaplanskyLie.InvariantSubspace.rep_identity",
+      "KaplanskyLie.InvariantSubspace.image_invariant"
+    ],
+    "book": "Гл. I, § 2, теорема 19: V S(I) инвариантно.",
+    "limitations": "Аддитивная подгруппа, порожденная v S_x; теорема 20 не формализована.",
+    "passages": [
+      "th:ideal-invariant-subspace"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/TracePowers.lean",
+    "declarations": [
+      "KaplanskyLie.TracePowers.trace_aeval_mul_X",
+      "KaplanskyLie.TracePowers.eq_zero_of_idempotent_of_trace",
+      "KaplanskyLie.TracePowers.isNilpotent_of_trace_pow",
+      "KaplanskyLie.TracePowers.pow_eq_sum_commutators",
+      "KaplanskyLie.TracePowers.isNilpotent_sum_commutators",
+      "KaplanskyLie.TracePowers.trace_form_invariant"
+    ],
+    "book": "Гл. I, § 2, теоремы 17, 18 полностью и инвариантность формы на с. 34.",
+    "limitations": "Для матриц над полем характеристики нуль; разложение V_1 + V_2 заменено проектором, многочленом от Z. Инвариантность формы метки не имеет.",
+    "passages": [
+      "th:trace-powers-nilpotent",
+      "th:sum-commutators-nilpotent"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/CharacteristicSubspaces.lean",
+    "declarations": [
+      "KaplanskyLie.CharacteristicSubspaces.derivation_shift",
+      "KaplanskyLie.CharacteristicSubspaces.derivation_power",
+      "KaplanskyLie.CharacteristicSubspaces.automorphism_shift",
+      "KaplanskyLie.CharacteristicSubspaces.automorphism_power",
+      "KaplanskyLie.CharacteristicSubspaces.root_space_product"
+    ],
+    "book": "Гл. I, § 2, теоремы 14, 15 с формулой (4) и показателем r + s - 1; § 4, теорема 43 для пары векторов.",
+    "limitations": "Без разложения на характеристические подпространства; теорема 16 не формализована.",
+    "passages": [
+      "th:derivation-characteristic-subspaces",
+      "eq:derivation-shift",
+      "th:automorphism-characteristic-subspaces",
+      "th:root-spaces-product"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/StringTraceSum.lean",
+    "declarations": [
+      "KaplanskyLie.StringTraceSum.sum_arith_eq_zero_iff",
+      "KaplanskyLie.StringTraceSum.sum_squares",
+      "KaplanskyLie.StringTraceSum.sum_squares_pos",
+      "KaplanskyLie.StringTraceSum.printed_alpha_not_trace_zero"
+    ],
+    "book": "Гл. I, § 3, конец доказательства теоремы 32: alpha = -k/2, f(x, x) = k(k + 1)(k + 2)/12; напечатанное alpha = k/2 опровергнуто.",
+    "limitations": "Только вычисление над Q; само строение представления не формализовано.",
+    "passages": [
+      "th:codimension-one-subalgebra"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/RepeatedCommutator.lean",
+    "declarations": [
+      "KaplanskyLie.RepeatedCommutator.repeated_commutator",
+      "KaplanskyLie.RepeatedCommutator.ad_sub_algebraMap",
+      "KaplanskyLie.RepeatedCommutator.characteristic_subspace_invariant"
+    ],
+    "book": "Гл. I, § 4, теорема 40 с показателем n + r - 1.",
+    "limitations": "Индукция иная, чем в книге; теорема 41 не формализована.",
+    "passages": [
+      "th:repeated-commutator"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/PencilNilpotent.lean",
+    "declarations": [
+      "KaplanskyLie.PencilNilpotent.pow_card_eq_zero_of_isNilpotent",
+      "KaplanskyLie.PencilNilpotent.natDegree_pencil_pow_le",
+      "KaplanskyLie.PencilNilpotent.pencil_pow_eq_zero",
+      "KaplanskyLie.PencilNilpotent.pencil_nilpotent"
+    ],
+    "book": "Гл. I, § 4, теорема 44 над любым полем, с B^n = 0.",
+    "limitations": "Вместо определителя Вандермонда подсчет корней; теорема 45 не формализована.",
+    "passages": [
+      "th:pencil-nilpotent"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/DerivationPower.lean",
+    "declarations": [
+      "KaplanskyLie.DerivationPower.iterate_add",
+      "KaplanskyLie.DerivationPower.leibniz_antidiagonal",
+      "KaplanskyLie.DerivationPower.leibniz_iterate",
+      "KaplanskyLie.DerivationPower.not_dvd_factorial",
+      "KaplanskyLie.DerivationPower.prime_dvd_choose",
+      "KaplanskyLie.DerivationPower.leibniz_power_p",
+      "KaplanskyLie.DerivationPower.derivation_power_p"
+    ],
+    "book": "Chapter I, section 7, pp. 67-68: theorem 73 and formula (11), for any not necessarily associative ring with p a = 0, every n in (11).",
+    "limitations": "Characteristic p is the hypothesis p . a = 0; scalars play no part. The definition of restricted algebras and (12) are not formalized; checks/sage/chapter-1d.py.",
+    "passages": [
+      "th:derivation-power-p",
+      "eq:leibniz-power"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/SlTwoString.lean",
+    "declarations": [
+      "KaplanskyLie.SlTwoString.eq6",
+      "KaplanskyLie.SlTwoString.eq7",
+      "KaplanskyLie.SlTwoString.string_relation",
+      "KaplanskyLie.SlTwoString.two_mul_choose_two",
+      "KaplanskyLie.SlTwoString.last_statement",
+      "KaplanskyLie.SlTwoString.last_statement_odd"
+    ],
+    "book": "Chapter I, section 5, pp. 55-57: theorem 58: (6), (7) for all i over a commutative ring, (1/2) i (i-1) being the integer C(i, 2); over a field, with u A^r = 0, u A^(r-1) != 0, r != 0 in K: 2 lambda = -(r - 1); for odd r = 2m + 1: lambda = -m (the reading of the remark for p = 2).",
+    "limitations": "[X H] = -X is not needed and not assumed. u A^(r-1) != 0 contains u != 0. The application A = R_a, X = R_x, H = R_h is not formalized; checks/sage/chapter-1c.py.",
+    "passages": [
+      "th:sl2-triple-vector",
+      "eq:sl2-h-action",
+      "eq:sl2-x-action"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/WeylTrace.lean",
+    "declarations": [
+      "KaplanskyLie.WeylTrace.card_eq_zero_of_commutator",
+      "KaplanskyLie.WeylTrace.dvd_of_commutator",
+      "KaplanskyLie.WeylTrace.A₁_mul_B₁_apply",
+      "KaplanskyLie.WeylTrace.B₁_mul_A₁_apply",
+      "KaplanskyLie.WeylTrace.commutator_A₁_B₁",
+      "KaplanskyLie.WeylTrace.trace_A₁_mul_B₁_eq",
+      "KaplanskyLie.WeylTrace.trace_A₁_mul_B₁",
+      "KaplanskyLie.WeylTrace.trace_A₁_mul_B₁_two",
+      "KaplanskyLie.WeylTrace.trace_A₁",
+      "KaplanskyLie.WeylTrace.trace_B₁",
+      "KaplanskyLie.WeylTrace.trace_shifted",
+      "KaplanskyLie.WeylTrace.commute_iterate",
+      "KaplanskyLie.WeylTrace.commute_power_p",
+      "KaplanskyLie.WeylTrace.relation_on_kernel",
+      "KaplanskyLie.WeylTrace.linearIndependent_powers"
+    ],
+    "book": "Chapter I, section 7, pp. 71-72: Tr(AB - BA) = 0 forces p | n; the matrices A_1, B_1, [A_1, B_1] = I, the printed A_1 B_1, Tr(A_1 B_1) = 1 + ... + (p - 1), zero for odd p, 1 for p = 2, the expansion of Tr(AB); [B A^p] = 0; x A^(i+1) B = (i + 1) x A^i; independence of x, ..., x A^(p-1).",
+    "limitations": "Schur's lemma and the normalization are not formalized (they need an algebraically closed field: checks/sage/chapter-1d.py refutes the printed perfect field); nor V = span of the powers, nor the composition series of theorem 77.",
+    "passages": [
+      "th:commutator-identity-irreducible",
+      "th:commutator-identity-trace"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/CSystem.lean",
+    "declarations": [
+      "KaplanskyLie.CSystem.PosDef.schwarz",
+      "KaplanskyLie.CSystem.PosDef.schwarz_eq",
+      "KaplanskyLie.CSystem.exists_bottom",
+      "KaplanskyLie.CSystem.not_nat_multiple",
+      "KaplanskyLie.CSystem.bottom_ne",
+      "KaplanskyLie.CSystem.chain_bound",
+      "KaplanskyLie.CSystem.cartan_integer",
+      "KaplanskyLie.CSystem.proportional",
+      "KaplanskyLie.CSystem.cartan_integers",
+      "KaplanskyLie.CSystem.string_length",
+      "KaplanskyLie.CSystem.reflection_mem",
+      "KaplanskyLie.CSystem.positive_root_minus_simple",
+      "KaplanskyLie.CSystem.smallest_system",
+      "KaplanskyLie.CSystem.printed_theorem_67_false"
+    ],
+    "book": "Chapter I, section 6, pp. 58-63, for an abstract C-system over an ordered field (axioms (2)-(5)): integrality for all pairs, Cauchy-Schwarz with equality, theorems 62, 63, 64, 65 (including beta = +-alpha), theorem 67 with the added condition, the printed theorem 67 refuted by Gamma = {+-1} in QQ.",
+    "limitations": "Axiom (1) is not used. Theorem 67 is proved in a sharper form that assumes only beta = sum m_i alpha_i, m_i natural, alpha_i in Gamma, beta != alpha_i. Theorems 66, 68-72 are not formalized; checks/sage/chapter-1c.py.",
+    "passages": [
+      "step:c-system-negative",
+      "step:c-system-multiples",
+      "step:c-system-integer",
+      "step:c-system-string",
+      "th:cartan-integers",
+      "th:string-length",
+      "th:proportional-roots",
+      "th:reflection-invariance",
+      "th:positive-root-minus-simple"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/VAlgebraSteps.lean",
+    "declarations": [
+      "KaplanskyLie.VAlgebraSteps.rank_one_r_lt_p",
+      "KaplanskyLie.VAlgebraSteps.rank_one_congruence",
+      "KaplanskyLie.VAlgebraSteps.h_on_powers",
+      "KaplanskyLie.VAlgebraSteps.eq15",
+      "KaplanskyLie.VAlgebraSteps.descent",
+      "KaplanskyLie.VAlgebraSteps.step_d",
+      "KaplanskyLie.VAlgebraSteps.step_d_printed_false",
+      "KaplanskyLie.VAlgebraSteps.step_d_exists",
+      "KaplanskyLie.VAlgebraSteps.chain_formula",
+      "KaplanskyLie.VAlgebraSteps.chain_products"
+    ],
+    "book": "Chapter I, section 8: theorem 88 step (b), the arithmetic of (14); theorem 90 step (a), (15), (16) and the descent to u = 0; step (d), (h_gamma, h_gamma) = (h_beta, h_beta)(1 + 2ij), the printed j refuted at p = 5, i = 1; theorems 93, 94, 96: along a string of t < p one-dimensional root spaces p_i q_i = (i + 1)(lambda + i/2), 2 lambda = -(t - 1), p_i, q_i != 0 inside.",
+    "limitations": "Only these sequences and congruences; the passage from a V-algebra to them, theorem 92 (t <= 4), the other steps of theorem 88 are not formalized; they are checked on examples in checks/sage/chapter-1d.py.",
+    "passages": [
+      "step:rank-one-no-divisors",
+      "eq:rank-one-congruence",
+      "step:isotropic-difference-root",
+      "eq:isotropic-induction",
+      "eq:isotropic-induction-step",
+      "step:isotropic-not-integer",
+      "th:root-sum-product",
+      "th:root-string-mod-p",
+      "th:root-string-length-char-p"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/NssGroups.lean",
+    "declarations": [
+      "KaplanskyLie.NssGroups.eq_one_of_forall_zpow_mem",
+      "KaplanskyLie.NssGroups.eq_one_of_forall_pow_mem",
+      "KaplanskyLie.NssGroups.exists_pow_not_mem",
+      "KaplanskyLie.NssGroups.discreteTopology_of_pow_eq_one",
+      "KaplanskyLie.NssGroups.isNSS_of_ker_of_range",
+      "KaplanskyLie.NssGroups.isNSS_quotient_extension",
+      "KaplanskyLie.NssGroups.isNSS_pi",
+      "KaplanskyLie.NssGroups.isNSS_prod",
+      "KaplanskyLie.NssGroups.not_isNSS_pi",
+      "KaplanskyLie.NssGroups.isNSS_of_injective",
+      "KaplanskyLie.NssGroups.isNSS_subgroup",
+      "KaplanskyLie.NssGroups.isNSS_quotient_inf"
+    ],
+    "book": "Chapter II, § 1, pp. 88-90: exercises 1-5; § 11, item 3 (a), p. 140.",
+    "limitations": "The topological group is arbitrary. Examples 1-6 and the example asked for in exercise 1 are not here; they are tested in checks/sage/chapter-2a.py.",
+    "passages": [
+      "exc:nss-bounded-order",
+      "exc:nss-extension",
+      "exc:nss-finite-product",
+      "exc:nss-infinite-product",
+      "exc:nss-continuous-embedding",
+      "step:further-lifting"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/CompactBasis.lean",
+    "declarations": [
+      "KaplanskyLie.CompactBasis.exists_nhds_conj_subset",
+      "KaplanskyLie.CompactBasis.exists_subset_of_antitone_compact",
+      "KaplanskyLie.CompactBasis.Tower.subgroup",
+      "KaplanskyLie.CompactBasis.Tower.mem_subgroup",
+      "KaplanskyLie.CompactBasis.Tower.conj_mem",
+      "KaplanskyLie.CompactBasis.Tower.normal_of_closure_eq_top",
+      "KaplanskyLie.CompactBasis.Tower.mem_of_forall_mem_mul"
+    ],
+    "book": "Chapter II, § 2, pp. 91-92: lemma 1, lemma 2 and the construction in the proof of theorem 1.",
+    "limitations": "The sequence W_i is a hypothesis (its properties are listed in the structure Tower); the metrizability theorem and theorem 1 itself are not formalized.",
+    "passages": [
+      "lem:compact-conjugation-neighbourhood",
+      "lem:decreasing-compact-basis",
+      "th:metrizable-quotient"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/SquaringNss.lean",
+    "declarations": [
+      "KaplanskyLie.SquaringNss.conj_eq_inv",
+      "KaplanskyLie.SquaringNss.conj_pow_eq_inv",
+      "KaplanskyLie.SquaringNss.eq_one_of_forall_zpow_mem",
+      "KaplanskyLie.SquaringNss.eq_one_of_forall_pow_mem",
+      "KaplanskyLie.SquaringNss.square_injective",
+      "KaplanskyLie.SquaringNss.onePar_eq"
+    ],
+    "book": "Chapter II, § 2, pp. 92-93: theorem 3; § 8, p. 119, and § 9, p. 132: uniqueness of a one-parameter subgroup with values in U on [-1, 1] and a given value at 1.",
+    "limitations": "Hausdorff, first countable, and the compact symmetric neighbourhood W without subgroups are hypotheses, obtained in the book from local compactness and theorem 2.",
+    "passages": [
+      "th:square-injective",
+      "lem:map-continuous",
+      "th:quotient-nss"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/ProductEstimate.lean",
+    "declarations": [
+      "KaplanskyLie.ProductEstimate.mul_smul_sub",
+      "KaplanskyLie.ProductEstimate.pow_smul_sub_eq_sum",
+      "KaplanskyLie.ProductEstimate.smul_mul_sub",
+      "KaplanskyLie.ProductEstimate.shift_sum_identity",
+      "KaplanskyLie.ProductEstimate.quotient_sum_identity",
+      "KaplanskyLie.ProductEstimate.power_shift_expansion",
+      "KaplanskyLie.ProductEstimate.telescoping_identity",
+      "KaplanskyLie.ProductEstimate.norm_mul_smul_sub_le",
+      "KaplanskyLie.ProductEstimate.norm_list_prod_smul_sub_le",
+      "KaplanskyLie.ProductEstimate.norm_list_prod_le_length_mul",
+      "KaplanskyLie.ProductEstimate.exists_max_factor",
+      "KaplanskyLie.ProductEstimate.norm_pow_smul_sub_le",
+      "KaplanskyLie.ProductEstimate.norm_shift_sum_le",
+      "KaplanskyLie.ProductEstimate.norm_power_shift_sub_le"
+    ],
+    "book": "Chapter II: formula (2) and the bound before (3), p. 101; the estimate before (17), formula (17), pp. 111-112; lemma 19, p. 116; lemma 30, p. 123, formula (19), p. 123; formula (21), p. 125; formula (27), p. 127; formula (30) and the estimate after it, p. 137.",
+    "limitations": "A group acting linearly and isometrically on a real normed space replaces C. The limits around these identities are not formalized.",
+    "passages": [
+      "eq:shift-sum-identity",
+      "eq:averaged-quotient-estimate",
+      "eq:product-estimate",
+      "lem:product-standard",
+      "eq:shifted-product-difference",
+      "lem:standard-to-zero",
+      "eq:difference-quotient-sum",
+      "eq:telescoping-identity",
+      "eq:power-shift-expansion",
+      "th:yamabe-small-subgroup"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/DeltaFunction.lean",
+    "declarations": [
+      "KaplanskyLie.DeltaFunction.delta_one",
+      "KaplanskyLie.DeltaFunction.delta_eq",
+      "KaplanskyLie.DeltaFunction.delta_eq_one",
+      "KaplanskyLie.DeltaFunction.one_div_le_delta",
+      "KaplanskyLie.DeltaFunction.delta_of_not_mem",
+      "KaplanskyLie.DeltaFunction.delta_nonneg",
+      "KaplanskyLie.DeltaFunction.delta_le_one",
+      "KaplanskyLie.DeltaFunction.delta_inv",
+      "KaplanskyLie.DeltaFunction.delta_mul_le",
+      "KaplanskyLie.DeltaFunction.abs_delta_mul_sub_le",
+      "KaplanskyLie.DeltaFunction.n_le_of_subset",
+      "KaplanskyLie.DeltaFunction.delta_le_of_subset",
+      "KaplanskyLie.DeltaFunction.abs_ciSup_sub_le",
+      "KaplanskyLie.DeltaFunction.phi_one",
+      "KaplanskyLie.DeltaFunction.phi_nonneg",
+      "KaplanskyLie.DeltaFunction.phi_le_one",
+      "KaplanskyLie.DeltaFunction.phi_lt_one",
+      "KaplanskyLie.DeltaFunction.phi_eq_zero",
+      "KaplanskyLie.DeltaFunction.abs_phi_mul_sub_le",
+      "KaplanskyLie.DeltaFunction.abs_phi_mul_right_sub_le"
+    ],
+    "book": "Chapter II, § 4, pp. 102-104: steps (i), (ii), (iv), lemma 3, lemma 4; § 5, p. 106: lemma 6; § 10, p. 135: the step in lemma 43.",
+    "limitations": "No topology; theta is any function with values in [0, 1] with the stated properties. The Haar integral psi is not here (checks/sage/chapter-2b.py).",
+    "passages": [
+      "step:integer-n",
+      "step:function-delta",
+      "lem:delta-properties",
+      "step:function-theta",
+      "eq:phi-definition",
+      "lem:phi-properties",
+      "lem:phi-right-equicontinuous",
+      "lem:yamabe-proper"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/SubgroupS.lean",
+    "declarations": [
+      "KaplanskyLie.SubgroupS.Ssubgroup",
+      "KaplanskyLie.SubgroupS.S_subset",
+      "KaplanskyLie.SubgroupS.S_antitone",
+      "KaplanskyLie.SubgroupS.S_eq_one",
+      "KaplanskyLie.SubgroupS.tendsto_one_of_theta",
+      "KaplanskyLie.SubgroupS.tendsto_phiSeq_iff",
+      "KaplanskyLie.SubgroupS.lambda_eq_one",
+      "KaplanskyLie.SubgroupS.eq_of_shift_eq"
+    ],
+    "book": "Chapter II, § 5, pp. 109-110: lemmas 12, 13, the end of lemma 14; § 6, p. 113; § 8, pp. 117-118; § 10, pp. 133, 135, 138.",
+    "limitations": "The sequence Delta_i is abstract, with the properties of lemma 3; the convergence phi_p(i) -> phi and Cauchy's inequality are not formalized.",
+    "passages": [
+      "lem:phi-value-one",
+      "lem:phi-one-subgroup",
+      "lem:psi-proper",
+      "th:ratio-bounded",
+      "lem:zero-derivative",
+      "lem:yamabe-proper",
+      "th:yamabe-small-subgroup"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/FloorSteps.lean",
+    "declarations": [
+      "KaplanskyLie.FloorSteps.add_floor_le",
+      "KaplanskyLie.FloorSteps.floor_add_le",
+      "KaplanskyLie.FloorSteps.pow_floor_add",
+      "KaplanskyLie.FloorSteps.tendsto_pow_floor_add",
+      "KaplanskyLie.FloorSteps.pow_floor_mul_le",
+      "KaplanskyLie.FloorSteps.floor_le_floor_chain",
+      "KaplanskyLie.FloorSteps.abs_floor_sub_le",
+      "KaplanskyLie.FloorSteps.two_mul_lt_of_strict",
+      "KaplanskyLie.FloorSteps.mul_pow_mem_of_lt",
+      "KaplanskyLie.FloorSteps.le_of_one_lt_div"
+    ],
+    "book": "Chapter II: the integer parts in theorems 4, 5, 8, 9 (pp. 94-98), lemma 19 (pp. 115-116), p. 112, lemma 35 (p. 126).",
+    "limitations": "Only the arithmetic and the remark of theorem 5 as a statement on limits; the theorems that use them are not.",
+    "passages": [
+      "th:canonical-sequence-bound",
+      "th:canonical-one-parameter",
+      "th:standard-sequence-neighbourhood",
+      "th:standard-sequence-convergence",
+      "lem:standard-uniform",
+      "lem:product-standard",
+      "eq:floor-n-bound",
+      "th:ratio-bounded"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/QSetsFundamental.lean",
+    "declarations": [
+      "KaplanskyLie.QSetsFundamental.eq_one_of_forall_pow_mem",
+      "KaplanskyLie.QSetsFundamental.Q_antitone",
+      "KaplanskyLie.QSetsFundamental.exists_exit_of_ne_one",
+      "KaplanskyLie.QSetsFundamental.no_exit_of_eq_one",
+      "KaplanskyLie.QSetsFundamental.Q_mem_nhds",
+      "KaplanskyLie.QSetsFundamental.Q_isCompact",
+      "KaplanskyLie.QSetsFundamental.Q_subset_of_nhds",
+      "KaplanskyLie.QSetsFundamental.exists_pow_subset",
+      "KaplanskyLie.QSetsFundamental.Q_pow_subset",
+      "KaplanskyLie.QSetsFundamental.no_exit_of_discrete",
+      "KaplanskyLie.QSetsFundamental.pow_floor_mem",
+      "KaplanskyLie.QSetsFundamental.tendsto_of_pow_floor"
+    ],
+    "book": "Chapter II, § 6, p. 111: lemma 15 and the hypothesis of theorem 13; § 2, pp. 94, 96: theorem 4, the first step of theorem 7.",
+    "limitations": "U is a compact symmetric neighbourhood of 1 in a Hausdorff group without subgroups inside; theorem 4 uses first countability (metrizability in the book). Theorem 5 and theorem 13 are not formalized.",
+    "passages": [
+      "lem:q-sets-fundamental",
+      "th:ratio-bounded",
+      "th:canonical-sequence-bound",
+      "th:canonical-set-compact",
+      "lem:map-continuous"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/ApproximationSteps.lean",
+    "declarations": [
+      "KaplanskyLie.ApproximationSteps.exists_finite_inter_subset",
+      "KaplanskyLie.ApproximationSteps.le_of_subset_preimage",
+      "KaplanskyLie.ApproximationSteps.exists_nhds_conj_mem",
+      "KaplanskyLie.ApproximationSteps.normal_of_connected",
+      "KaplanskyLie.ApproximationSteps.noSubgroup_quotient",
+      "KaplanskyLie.ApproximationSteps.isNSS_quotient",
+      "KaplanskyLie.ApproximationSteps.mul_subset_of_le"
+    ],
+    "book": "Chapter II, § 10: lemma 41 (p. 132), lemma 43 (p. 135), theorem 18 (pp. 138-139, including the step added by correction); § 11, item 1 (p. 139).",
+    "limitations": "Peter-Weyl and theorem 17, which supply the sets N, X, are hypotheses.",
+    "passages": [
+      "lem:compact-nss-quotient",
+      "lem:yamabe-proper",
+      "th:approximation-nss",
+      "step:further-product-embedding"
+    ]
+  },
+  {
+    "file": "checks/lean/KaplanskyLie/StandardSteps.lean",
+    "declarations": [
+      "KaplanskyLie.StandardSteps.norm_pow_smul_sub_le",
+      "KaplanskyLie.StandardSteps.pow_mem_of_tendsto_zero",
+      "KaplanskyLie.StandardSteps.exists_boundary_time",
+      "KaplanskyLie.StandardSteps.pow_eq_of_add",
+      "KaplanskyLie.StandardSteps.mem_Q_of_scale"
+    ],
+    "book": "Chapter II, § 8, p. 120: the numbers lambda_i of lemma 28; § 9, pp. 122-124: lemma 30, first half; lemma 33.",
+    "limitations": "The action is on a normed space, with a -> a f continuous (theorem 11) and f proper as hypotheses; first countability replaces metrizability. The second half of lemma 30 uses theorem 12 and is not here.",
+    "passages": [
+      "lem:standard-to-zero",
+      "lem:image-fills-neighbourhood",
+      "lem:compact-small-time"
+    ]
+  }
+]

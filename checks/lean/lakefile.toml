@@ -1,0 +1,11 @@
+name = "KaplanskyLie"
+version = "0.1.0"
+defaultTargets = ["KaplanskyLie"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "a218e50f981942cba4fd060faff7cae680805062"
+
+[[lean_lib]]
+name = "KaplanskyLie"

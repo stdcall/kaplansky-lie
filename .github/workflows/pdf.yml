@@ -1,0 +1,145 @@
+name: PDF and checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: '0.12.16'
+          enable-cache: true
+      - run: uv sync --locked
+      - name: Install pinned Typst tools
+        shell: uv run --locked python {0}
+        run: |
+          import hashlib, json, os, pathlib, tarfile, urllib.request
+          config = json.loads(pathlib.Path('config/project.json').read_text())
+          target = pathlib.Path(os.environ['RUNNER_TEMP'])/'typst-tools'
+          target.mkdir()
+          for name, spec in config['linux_tools'].items():
+              archive = target/spec['url'].split('/')[-1]
+              urllib.request.urlretrieve(spec['url'], archive)
+              assert hashlib.sha256(archive.read_bytes()).hexdigest() == spec['sha256'], name
+              if spec.get('archive'):
+                  with tarfile.open(archive) as tar:
+                      tar.extractall(target/name, filter='data')
+                  executable = next(p for p in (target/name).rglob(name) if p.is_file())
+                  (target/name).rename(target/(name+'-files'))
+                  executable = target/(name+'-files')/executable.relative_to(target/name)
+                  (target/name).symlink_to(executable)
+              else:
+                  archive.rename(target/name)
+              (target/name).chmod(0o755)
+          with open(os.environ['GITHUB_PATH'], 'a') as stream:
+              stream.write(str(target)+'\n')
+      - name: Check and build
+        # The full build needs more memory than the runner has: add swap.
+        run: |
+          set -euo pipefail
+          check_swap="$RUNNER_TEMP/kaplansky-lie.swap"
+          sudo fallocate -l 8G "$check_swap"
+          sudo chmod 600 "$check_swap"
+          sudo mkswap "$check_swap"
+          sudo swapon "$check_swap"
+          trap 'sudo swapoff "$check_swap"; sudo rm -f "$check_swap"' EXIT
+          free -h
+          /usr/bin/time -v uv run --locked python scripts/project.py check
+      - name: Checksums of the published PDFs
+        working-directory: build
+        run: |
+          sha256sum -- *.pdf > SHA256SUMS
+          cat SHA256SUMS
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: kaplansky-lie-pdfs
+          path: |
+            build/*.pdf
+            build/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 14
+  sage:
+    runs-on: ubuntu-24.04
+    # The chapter scripts take about ten minutes on a laptop; GAP core only.
+    timeout-minutes: 60
+    container:
+      image: sagemath/sagemath:10.9@sha256:e068670ae5863b54b2550e72437ec637b0283acb0dc712c8584c124dbf44e667
+      options: --user 0
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Exact algebra checks
+        run: sage -python scripts/check_sage.py
+  lean:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      LEAN_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: leanprover/lean-action@50fcf42d2e460296f1a34b402e990d1b24f8b596
+        with:
+          lake-package-directory: checks/lean
+          auto-config: 'false'
+          build: 'true'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+          leanchecker: 'true'
+          leanchecker-args: '--fresh KaplanskyLie'
+      - name: Check declaration axioms
+        run: python3 checks/lean/check_axioms.py
+  release:
+    # Every commit on main is released: tag YYYY-MM-DD.N (build date in UTC
+    # and build number), the PDFs and their SHA256SUMS.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [check, lean, sage]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: kaplansky-lie-pdfs
+          path: build
+      - name: Require the complete edition
+        run: python3 -c 'import json; assert json.load(open("config/project.json"))["stage"] == "final", "Releases require stage final"'
+      - name: Publish the release of this commit
+        working-directory: build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          SOURCE_SHA: ${{ github.sha }}
+          BUILD: ${{ github.run_number }}
+          TITLE: Капланский, Алгебры Ли и локально компактные группы
+        run: |
+          if [[ -f SHA256SUMS ]]; then sha256sum --check SHA256SUMS; fi
+          sha256sum -- *.pdf > SHA256SUMS
+          date=$(date -u +%F)
+          tag="$date.$BUILD"
+          latest=false
+          if [[ "$(gh api "repos/$GH_REPO/commits/main" --jq .sha)" == "$SOURCE_SHA" ]]; then
+            latest=true
+          fi
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" --target "$SOURCE_SHA" --latest="$latest" \
+              --title "$TITLE · $date · build $BUILD" \
+              --notes "Built on $date (UTC) from commit $SOURCE_SHA."
+          fi
+          gh release upload "$tag" ./*.pdf SHA256SUMS --clobber

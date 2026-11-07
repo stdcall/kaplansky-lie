@@ -1,0 +1,48 @@
+{
+  "entry": "content/main.typ",
+  "output": "build/kaplansky-lie.pdf",
+  "stage": "final",
+  "pdf_navigation": {
+    "outline_left": 0
+  },
+  "font_paths": [
+    "assets/fonts"
+  ],
+  "format_sources": [
+    "content"
+  ],
+  "tool_versions": {
+    "typst": "0.15.1",
+    "typstyle": "0.15.1",
+    "tinymist": "0.15.10"
+  },
+  "corrections_output": "build/kaplansky-lie.corrections.pdf",
+  "corrections_entry": "content/corrections.typ",
+  "required_text": [
+    "Алгебры Ли",
+    "И. Капланский"
+  ],
+  "linux_tools": {
+    "typst": {
+      "url": "https://github.com/typst/typst/releases/download/v0.15.1/typst-x86_64-unknown-linux-musl.tar.xz",
+      "sha256": "a6d077d0a95eed5a2eba715b2dae06be954f624ccbf85758a03f389ded33118c",
+      "archive": true
+    },
+    "typstyle": {
+      "url": "https://github.com/typstyle-rs/typstyle/releases/download/v0.15.1/typstyle-x86_64-unknown-linux-gnu",
+      "sha256": "213c11bc2c64f7237c382b4bb1d06991530ed9d44d3a05204ca3c19615d55b99"
+    },
+    "tinymist": {
+      "url": "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.10/tinymist-x86_64-unknown-linux-gnu.tar.gz",
+      "sha256": "10df33ec0b6cb380b1354b55bd8a32fdc2f00fec281b7dc0a41086bd0038e0fc",
+      "archive": true
+    }
+  },
+  "prose": {
+    "checker": "vale",
+    "header_band": 52.0
+  },
+  "pagination": {
+    "first_arabic_label": 2
+  }
+}

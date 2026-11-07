@@ -1,0 +1,23 @@
+-- Root module: imports every file of checks/lean/KaplanskyLie/.
+import KaplanskyLie.IdealProducts
+import KaplanskyLie.InvariantSubspace
+import KaplanskyLie.TracePowers
+import KaplanskyLie.CharacteristicSubspaces
+import KaplanskyLie.StringTraceSum
+import KaplanskyLie.RepeatedCommutator
+import KaplanskyLie.PencilNilpotent
+import KaplanskyLie.DerivationPower
+import KaplanskyLie.SlTwoString
+import KaplanskyLie.WeylTrace
+import KaplanskyLie.CSystem
+import KaplanskyLie.VAlgebraSteps
+import KaplanskyLie.NssGroups
+import KaplanskyLie.CompactBasis
+import KaplanskyLie.SquaringNss
+import KaplanskyLie.ProductEstimate
+import KaplanskyLie.DeltaFunction
+import KaplanskyLie.SubgroupS
+import KaplanskyLie.FloorSteps
+import KaplanskyLie.QSetsFundamental
+import KaplanskyLie.ApproximationSteps
+import KaplanskyLie.StandardSteps

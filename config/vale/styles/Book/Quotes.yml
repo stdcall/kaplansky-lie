@@ -1,0 +1,7 @@
+extends: existence
+message: "Кавычки: внешние — «…», вложенные — „…“; здесь %s."
+level: error
+nonword: true
+tokens:
+  - '"'
+  - '”'
